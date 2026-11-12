@@ -3,12 +3,133 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Qure — test the feature, not just the code (MC2)</title>
 <meta name="robots" content="noindex">
-<title>Pages test</title>
-<style>body{font-family:system-ui,-apple-system,sans-serif;max-width:600px;margin:80px auto;padding:0 16px;color:#222;background:#fff}</style>
+<style>
+  :root{--bg:#0f1115;--panel:#171a21;--text:#e9ecf1;--muted:#a3abb8;--accent:#7c5cff;--accent2:#21d4a7;--line:#2a2f3a}
+  *{box-sizing:border-box}
+  body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+  a{color:inherit}
+  .wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+  header{padding:18px 0;border-bottom:1px solid var(--line)}
+  header .wrap{display:flex;justify-content:space-between;align-items:center}
+  .logo{font-weight:700;letter-spacing:.2px}
+  .logo small{color:var(--muted);font-weight:500;margin-left:6px}
+  .hero{padding:72px 0 56px}
+  h1{font-size:clamp(30px,5vw,50px);line-height:1.1;margin:0 0 18px;max-width:820px}
+  h1 span{color:var(--accent2)}
+  .sub{font-size:19px;color:var(--muted);max-width:700px;margin:0 0 30px}
+  .cta{display:inline-block;background:var(--accent);color:#fff;text-decoration:none;font-weight:600;padding:14px 24px;border-radius:10px;font-size:17px}
+  .cta:hover{filter:brightness(1.1)}
+  .note{color:var(--muted);font-size:14px;margin-top:12px}
+  section{padding:56px 0;border-top:1px solid var(--line)}
+  h2{font-size:28px;margin:0 0 24px}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:22px}
+  .card b{display:block;color:var(--accent2);font-size:14px;margin-bottom:6px}
+  .card h3{margin:0 0 8px;font-size:18px}
+  .card p{margin:0;color:var(--muted)}
+  .tablewrap{overflow-x:auto}
+  table{width:100%;border-collapse:collapse;min-width:720px;font-size:15px}
+  th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{color:var(--muted);font-weight:600}
+  td:first-child{font-weight:600}
+  .q{background:rgba(124,92,255,.08)}
+  .src{font-size:13px;color:var(--muted);margin-top:12px}
+  ul.req{padding-left:20px;color:var(--muted)}
+  .placeholder{border:1px dashed #d9a400;color:#ffd666;border-radius:10px;padding:14px 16px;font-size:15px}
+  details{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+  summary{cursor:pointer;font-weight:600}
+  details p{color:var(--muted);margin:10px 0 0}
+  .final{text-align:center}
+  footer{padding:30px 0;color:var(--muted);font-size:13px;border-top:1px solid var(--line)}
+</style>
 </head>
 <body>
-<h1>GitHub Pages test</h1>
-<p>If you can see this, publishing works. Version: 1.</p>
+<div style="background:#d9a400;color:#111;text-align:center;font-size:14px;font-weight:600;padding:8px 12px">Interview demo. Not an official Qure or JetBrains page.</div>
+<header><div class="wrap">
+  <div class="logo">Qure <small>by JetBrains</small></div>
+  <a class="cta js-download" href="https://quretests.com/download" style="padding:9px 16px;font-size:15px">Download</a>
+</div></header>
+
+<main>
+<div class="hero"><div class="wrap">
+  <h1>Your AI coding assistant writes test code. <span>Qure tests the feature.</span></h1>
+  <p class="sub">Describe a feature or record a flow. Qure clicks through your web app in its own browser, shows you what it tested, and writes Playwright or Cypress tests into your repo.</p>
+  <a class="cta js-download" href="https://quretests.com/download" data-cta="hero">Download free for 30 days</a>
+  <p class="note">No credit card required. Desktop app for macOS, Windows and Linux.</p>
+</div></div>
+
+<section id="how"><div class="wrap">
+  <h2>How it works</h2>
+  <div class="steps">
+    <div class="card"><b>Step 1</b><h3>Describe or record</h3><p>Point Qure at a feature: a task, a spec or your code. Or record the flow once in its built-in browser.</p></div>
+    <div class="card"><b>Step 2</b><h3>Review what it will test</h3><p>Qure proposes scenarios, runs them, and shows recordings and any issues found, so you check the behaviour, not just the code.</p></div>
+    <div class="card"><b>Step 3</b><h3>Keep the tests</h3><p>Deterministic Playwright or Cypress tests land in your repository, ready for your normal workflow.</p></div>
+  </div>
+</div></section>
+
+<section id="compare"><div class="wrap">
+  <h2>Qure and the tools you might already use</h2>
+  <div class="tablewrap"><table>
+    <thead><tr><th></th><th>Coding agent + Playwright MCP</th><th>Playwright Test Agents</th><th>Cypress <code>cy.prompt</code></th><th class="q">Qure</th></tr></thead>
+    <tbody>
+      <tr><td>Set-up</td><td>Configure a browser MCP server in your agent</td><td><code>npx playwright init-agents</code>, then run inside an AI coding tool</td><td>Cypress Cloud account or record key</td><td class="q">Desktop app with a built-in browser</td></tr>
+      <tr><td>You start from</td><td>Prompts</td><td>A planner that explores the app and writes a plan</td><td>Natural-language steps inside a test</td><td class="q">A feature description, or a recorded flow</td></tr>
+      <tr><td>You get</td><td>Code the agent writes</td><td>A plan, test files, and a healer for failing tests</td><td>Cypress commands generated from the steps</td><td class="q">Scenarios to review, executed runs with recordings, and tests in your repo</td></tr>
+    </tbody>
+  </table></div>
+  <p class="src">Workflow facts only, from each tool's public documentation (dates and links go here before launch). No claim that one is better.</p>
+</div></section>
+
+<section id="need"><div class="wrap">
+  <h2>What you need</h2>
+  <ul class="req">
+    <li>A web app you can run locally or in a test environment</li>
+    <li>A repository that uses Playwright or Cypress (or is ready to)</li>
+    <li>macOS, Windows or Linux</li>
+  </ul>
+  <div class="placeholder">Placeholder: how your code and data are handled. Only Qure's own approved wording goes here.</div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <h2>Questions</h2>
+  <details><summary>Is it free?</summary><p>Free for 30 days, no credit card required. Contact Qure for team pricing.</p></details>
+  <details><summary>Which frameworks does it support?</summary><p>Playwright and Cypress. Tests are written into your own repository.</p></details>
+  <details><summary>I already use an AI coding assistant. Why add Qure?</summary><p>Your assistant writes test code when asked. Qure runs the feature in its own browser and shows you what it tested before you keep the tests.</p></details>
+</div></section>
+
+<section class="final"><div class="wrap">
+  <h2>Try it on one feature this week</h2>
+  <a class="cta js-download" href="https://quretests.com/download" data-cta="footer">Download free for 30 days</a>
+</div></section>
+</main>
+
+<footer><div class="wrap">Interview demo. Not an official Qure or JetBrains page.</div></footer>
+
+<script>
+// Attribution: keep the ad click ID and UTMs, and pass them to the download link.
+// Note: UK/IE visitors need a consent banner before this runs (needs legal review).
+(function () {
+  var KEYS = ['utm_source','utm_medium','utm_campaign','utm_content','utm_term','gclid','li_fat_id'];
+  var params = new URLSearchParams(location.search), stored = {};
+  try { stored = JSON.parse(localStorage.getItem('qure_attr') || '{}'); } catch (e) {}
+  var fresh = KEYS.some(function (k) { return params.get(k); });
+  if (fresh) {
+    stored = { landed_at: new Date().toISOString(), page: location.pathname };
+    KEYS.forEach(function (k) { if (params.get(k)) stored[k] = params.get(k); });
+    try { localStorage.setItem('qure_attr', JSON.stringify(stored)); } catch (e) {}
+  }
+  if (!stored.visit_id) {
+    stored.visit_id = (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()));
+    try { localStorage.setItem('qure_attr', JSON.stringify(stored)); } catch (e) {}
+  }
+  document.querySelectorAll('.js-download').forEach(function (a) {
+    var url = new URL(a.href);
+    KEYS.concat(['visit_id']).forEach(function (k) { if (stored[k]) url.searchParams.set(k, stored[k]); });
+    a.href = url.toString();
+  });
+})();
+</script>
 </body>
 </html>
